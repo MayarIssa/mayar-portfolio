@@ -142,7 +142,7 @@ projects.push({
     "Full right-to-left Arabic interface with a one-click switch to English.",
     "Account sign-up and secure login for staff.",
   ],
-  stack: ["Next.js", "Vercel"],
+  stack: ["Arabic RTL", "Authentication", "Vercel"],
   live: "https://hr-pharmacy-nine.vercel.app/",
   tint: "#0f766e",
 });
