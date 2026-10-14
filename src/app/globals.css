@@ -3,23 +3,27 @@
 @theme {
   --font-display: "Bricolage Grotesque Variable", "Segoe UI", sans-serif;
   --font-sans: "Figtree Variable", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
 
-  /* A design canvas: cool grey board, white frames, blue-black ink,
-     an electric selection blue, and a redline pink for spec annotations. */
-  --color-canvas: #eceef3;
-  --color-frame: #ffffff;
-  --color-ink: #14161c;
-  --color-muted: #5a6170;
-  --color-hair: #d2d6df;
-  --color-select: #2b59ff;
-  --color-select-deep: #1b3fd1;
-  --color-select-tint: #e5ebff;
-  --color-redline: #ff3d7f;
-  --color-cursor: #ff3d7f;
+  /* The palette of a design tool in dark mode: graphite canvas and panels,
+     plus the colours designers know as selection, multiplayer and component. */
+  --color-canvas: #111114;
+  --color-panel: #1a1a1f;
+  --color-panel-2: #222228;
+  --color-line: #2d2d35;
+  --color-text: #f2f2f5;
+  --color-muted: #a1a1ae;
+  --color-faint: #6c6c7a;
+  --color-blue: #0d99ff;
+  --color-pink: #ff4d8d;
+  --color-purple: #9747ff;
+  --color-green: #14ae5c;
+  --color-yellow: #ffc700;
+  --color-coral: #ff7262;
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html {
@@ -28,50 +32,45 @@ html {
 
 body {
   background: var(--color-canvas);
-  color: var(--color-ink);
+  color: var(--color-text);
   font-family: var(--font-sans);
 }
 
-.dot-grid {
-  background-image: radial-gradient(circle at 1px 1px, rgb(20 22 28 / 0.09) 1px, transparent 0);
-  background-size: 22px 22px;
+::selection {
+  background: var(--color-blue);
+  color: white;
 }
-.dot-grid-light {
-  background-image: radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.16) 1px, transparent 0);
-  background-size: 22px 22px;
+
+.dot-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.07) 1px, transparent 0);
+  background-size: 24px 24px;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-select);
+  outline: 2px solid var(--color-blue);
   outline-offset: 3px;
 }
 
-/* The one orchestrated moment: a collaborator's cursor flies in,
-   lands on the name, and the selection box draws itself around it. */
-@keyframes cursor-fly {
-  0% { transform: translate(55vw, 40vh) rotate(-8deg); opacity: 0; }
-  12% { opacity: 1; }
-  70% { transform: translate(-6px, -6px) rotate(0deg); }
-  100% { transform: translate(0, 0); opacity: 1; }
+/* Infinite tool marquee. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
-@keyframes draw-edge {
-  from { clip-path: inset(0 100% 100% 0); }
-  to { clip-path: inset(0 0 0 0); }
+.marquee-track {
+  animation: marquee 38s linear infinite;
 }
-@keyframes pop {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
 }
-@keyframes rise {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
-.cursor-fly { animation: cursor-fly 1.25s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
-.select-box { animation: draw-edge 0.7s cubic-bezier(0.65, 0, 0.35, 1) 1.3s both; }
-.select-handle { animation: pop 0.22s ease-out both; }
-.select-tag { animation: rise 0.35s ease-out 2s both; }
+.caret {
+  animation: blink 1s step-end infinite;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .cursor-fly, .select-box, .select-handle, .select-tag { animation: none; }
+  .marquee-track, .caret { animation: none; }
 }

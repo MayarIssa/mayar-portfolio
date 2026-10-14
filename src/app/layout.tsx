@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import "@fontsource-variable/bricolage-grotesque";
 import "@fontsource-variable/figtree";
+import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
 import { profile } from "@/content";
 
+const title = `${profile.fullName} — ${profile.role}`;
+
 export const metadata: Metadata = {
-  title: `${profile.fullName}, ${profile.role}`,
+  title,
   description: profile.intro,
-  openGraph: {
-    title: `${profile.fullName}, ${profile.role}`,
-    description: profile.intro,
-    type: "website",
-  },
+  openGraph: { title, description: profile.intro, type: "website", url: "https://mayar-issa.vercel.app" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
