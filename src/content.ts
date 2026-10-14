@@ -162,8 +162,8 @@ export const process = [
 
 export const experience = [
   {
-    role: "Sublime+",
-    org: "AI-powered marketing agency",
+    role: "Full Stack Developer",
+    org: "Sublime+, AI-powered marketing agency",
     when: "Aug 2026 – now",
     detail: "Built, launched and maintain the company website. The agency serves clients in the US, Europe and the Middle East.",
   },
