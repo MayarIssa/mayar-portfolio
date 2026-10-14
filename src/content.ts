@@ -137,6 +137,7 @@ export const projects: Project[] = [
       "Admin dashboard for orders, products, bundles and offers.",
     ],
     stack: ["Next.js", "TypeScript", "Prisma", "MongoDB"],
+    live: "https://magnetiq-freelancer12.vercel.app/",
     code: "https://github.com/MayarIssa/magnetiq",
     tint: "#FF7262",
   },
