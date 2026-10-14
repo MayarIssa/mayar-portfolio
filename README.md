@@ -1,8 +1,22 @@
 # Mayar Issa — Portfolio
 
-My personal site: selected projects, experience and how to reach me.
+My personal site: the products I've designed and built, my experience, and how to reach me.
 
-Built with Next.js, TypeScript and Tailwind CSS, deployed on Vercel.
+**Live:** [ADD: Vercel URL once deployed]
+
+![Portfolio hero](public/work/hero.webp)
+
+## What's inside
+
+- A hero where a collaborator's cursor flies in and "selects" my name, the way a layer gets selected in Figma: a nod to how I work, designing first and building second.
+- Project cards that show each live site inside a browser window, with what I built, the stack, and links to the live site and code.
+- Experience, education, Cisco certificates and skills.
+
+## Built with
+
+Next.js (App Router) · TypeScript · Tailwind CSS · self-hosted Bricolage Grotesque and Figtree fonts · deployed on Vercel
+
+It respects reduced-motion settings, works with a keyboard, and lays out down to small phones.
 
 ## Editing
 
