@@ -8,8 +8,9 @@ export const profile = {
   fullName: "Mayar Mohamed Issa",
   role: "Software engineer",
   location: "Alexandria, Egypt",
+  status: "Open to junior software engineering roles",
   intro:
-    "I design interfaces in Figma and build them for real: front ends in Next.js and TypeScript, APIs in ASP.NET Core and SQL Server. Computer Science graduate, former teaching assistant, and the person who built and runs the Sublime+ website.",
+    "I design interfaces in Figma, then build them for real: front ends in Next.js and TypeScript, APIs in ASP.NET Core and SQL Server, shipped to Vercel and Cloudflare.",
   email: "Myar.issa2003@gmail.com",
   github: "https://github.com/MayarIssa",
   linkedin: "https://www.linkedin.com/in/mayar-issa/",
@@ -18,64 +19,90 @@ export const profile = {
 export type Project = {
   slug: string;
   name: string;
-  /** Shown as the frame's label, like a Figma frame name. */
-  frame: string;
+  year: string;
+  kind: string;
   summary: string;
   role: string;
   points: string[];
   stack: string[];
   live?: string;
   code?: string;
+  /** Card colour when there's no screenshot yet. */
+  tint: string;
   image?: { src: string; alt: string };
   /** For API projects: a real request and response, shown instead of a screenshot. */
   sample?: { request: string; response: string };
+  featured?: boolean;
 };
 
 export const projects: Project[] = [
   {
     slug: "mentoro",
     name: "Mentoro",
-    frame: "Mentoro / Graduation project, 2025",
+    year: "2025",
+    kind: "Graduation project",
     summary: "A web platform that matches mentees with mentors for guidance and career growth.",
     role: "UI/UX designer and frontend developer, team of six",
     points: [
       "Designed the complete interface in Figma before any code was written.",
       "Built the home page, user profiles and the mentor–mentee connections feature.",
-      "Worked alongside two backend and two mobile developers on one shared product.",
+      "Shipped alongside two backend and two mobile developers on one product.",
     ],
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Figma"],
     live: "https://mentoro2.vercel.app/",
+    tint: "#6c4cf1",
+    featured: true,
   },
   {
     slug: "carechart",
     name: "CareChart EHR",
-    frame: "CareChart / Electronic health record, 2026",
-    summary:
-      "A patient record system for a small clinic: allergies, problems, medications, vitals trends and SOAP visit notes.",
+    year: "2026",
+    kind: "Health records app",
+    summary: "Patient records for a small clinic: allergies, problems, medications, vitals trends and SOAP visit notes.",
     role: "Designed and built solo",
     points: [
-      "Allergy banner and vital-sign flags designed so the dangerous detail is the first thing a clinician sees.",
-      "One validation schema shared by every form and the data layer, plus an audit trail of every change.",
-      "Blood-pressure trend chart drawn in hand-written SVG; 25 unit tests on the clinical rules.",
+      "Severe-allergy banner and vital-sign flags put the dangerous detail first.",
+      "One validation schema shared by every form and the data layer, plus an audit trail.",
+      "Blood-pressure trend chart in hand-written SVG; 25 unit tests on the clinical rules.",
     ],
-    stack: ["Next.js", "TypeScript", "Zod", "Vitest", "Tailwind CSS"],
-    live: "[ADD: CareChart URL]",
+    stack: ["Next.js", "TypeScript", "Zod", "Vitest"],
     code: "https://github.com/MayarIssa/carechart-ehr",
-    image: { src: "/work/carechart.webp", alt: "CareChart patient summary showing a red severe-allergy banner, latest vitals and problem list" },
+    tint: "#2f6f68",
+    image: { src: "/work/carechart.webp", alt: "CareChart patient summary with a red severe-allergy banner, latest vitals and problem list" },
+    featured: true,
+  },
+  {
+    slug: "sublime",
+    name: "Sublime+",
+    year: "2026",
+    kind: "Company website",
+    summary: "The website for Sublime+, an AI-powered content and marketing agency.",
+    role: "Built, launched and maintain it",
+    points: [
+      "Blog editor that publishes by committing Markdown to GitHub: no database to run.",
+      "Technical SEO, structured data, Search Console, Analytics and meeting booking.",
+      "Deployed to Cloudflare Workers with OpenNext.",
+    ],
+    stack: ["Next.js", "Tailwind CSS", "Framer Motion", "Cloudflare"],
+    live: "https://sublime-plus.com/",
+    tint: "#1f4a32",
+    image: { src: "/work/sublime.webp", alt: "Sublime+ homepage with the headline 'Be the brand AI recommends'" },
   },
   {
     slug: "shop-api",
     name: "Shop API",
-    frame: "Shop API / E-commerce backend, 2026",
+    year: "2026",
+    kind: "E-commerce backend",
     summary: "A REST API for an online store: catalog, cart, checkout and orders, with customer and admin roles.",
     role: "Designed and built solo",
     points: [
-      "Checkout runs in a database transaction: stock is reduced and the cart emptied together, or not at all.",
-      "JWT authentication, hashed passwords and role-based access for admins and customers.",
-      "Integration tests run the real API against an in-memory database on every push.",
+      "Checkout runs in a transaction: stock and cart change together or not at all.",
+      "JWT auth, hashed passwords and role-based access.",
+      "Integration tests run on every push with GitHub Actions.",
     ],
-    stack: ["C#", "ASP.NET Core", "Entity Framework Core", "SQL Server", "xUnit"],
+    stack: ["C#", "ASP.NET Core", "EF Core", "SQL Server"],
     code: "https://github.com/MayarIssa/shop-api",
+    tint: "#16181d",
     sample: {
       request: `POST /api/orders/checkout
 Authorization: Bearer eyJhbGciOi…
@@ -85,38 +112,29 @@ Authorization: Bearer eyJhbGciOi…
   "id": 42,
   "status": "Pending",
   "total": 99.98,
-  "items": [
-    { "productName": "Wireless Earbuds",
-      "unitPrice": 49.99, "quantity": 2 }
-  ]
+  "items": [{ "productName": "Wireless Earbuds",
+              "unitPrice": 49.99, "quantity": 2 }]
 }`,
     },
   },
   {
-    slug: "sublime",
-    name: "Sublime+",
-    frame: "Sublime+ / Company website, 2026",
-    summary: "The marketing site for Sublime+, an AI-powered content and marketing agency.",
-    role: "Built, launched and maintain it",
-    points: [
-      "Blog editor that publishes by committing Markdown to GitHub, so posts deploy with no database to run.",
-      "Technical SEO: sitemap, structured data, Open Graph images, Search Console and Analytics.",
-      "Deployed to Cloudflare Workers with OpenNext.",
-    ],
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Cloudflare"],
-    live: "https://sublime-plus.com/",
-    image: { src: "/work/sublime.webp", alt: "Sublime+ homepage with the headline 'Be the brand AI recommends'" },
-  },
-  {
     slug: "buildfin",
     name: "BuildFin",
-    frame: "BuildFin / Building finance manager, 2026",
-    summary: "A mobile-friendly web app for managing a residential building's dues and shared expenses.",
+    year: "2026",
+    kind: "Building finance app",
+    summary: "A phone-friendly app that tracks a residential building's dues and shared expenses.",
     role: "Designed and built solo",
     points: ["Tracks what residents owe and what the building spends, from a phone."],
     stack: ["Next.js", "MongoDB Atlas", "Vercel"],
     live: "https://building11.vercel.app/",
+    tint: "#b4532a",
   },
+];
+
+export const process = [
+  { step: "Design", detail: "Flows and screens in Figma first, so the team agrees on what we're building before anyone codes it." },
+  { step: "Build", detail: "Typed front ends in Next.js and TypeScript; APIs in ASP.NET Core with Entity Framework and SQL Server." },
+  { step: "Ship", detail: "Tested in CI, deployed to Vercel or Cloudflare, and kept fast, accessible and easy to find in search." },
 ];
 
 export const experience = [
@@ -160,9 +178,9 @@ export const education = {
 };
 
 export const certifications = [
-  "Cisco CCNA: Introduction to Networks",
-  "Cisco CCNA: Switching, Routing, and Wireless Essentials",
-  "Cisco CCNA: Enterprise Networking, Security, and Automation",
+  "CCNA: Introduction to Networks",
+  "CCNA: Switching, Routing, and Wireless Essentials",
+  "CCNA: Enterprise Networking, Security, and Automation",
 ];
 
 export const skills: { group: string; items: string[] }[] = [
