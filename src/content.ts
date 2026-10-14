@@ -131,6 +131,22 @@ Authorization: Bearer eyJhbGciOi…
   },
 ];
 
+projects.push({
+  slug: "nour-hr",
+  name: "Nour HR",
+  year: "2026",
+  kind: "Pharmacy HR system",
+  summary: "A bilingual human-resources system for a pharmacy, in Arabic and English.",
+  role: "Designed and built solo",
+  points: [
+    "Full right-to-left Arabic interface with a one-click switch to English.",
+    "Account sign-up and secure login for staff.",
+  ],
+  stack: ["Next.js", "Vercel"],
+  live: "https://hr-pharmacy-nine.vercel.app/",
+  tint: "#0f766e",
+});
+
 export const process = [
   { step: "Design", detail: "Flows and screens in Figma first, so the team agrees on what we're building before anyone codes it." },
   { step: "Build", detail: "Typed front ends in Next.js and TypeScript; APIs in ASP.NET Core with Entity Framework and SQL Server." },
