@@ -51,7 +51,8 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "SignalR", "next-intl", "Figma"],
     live: "https://mentoro2.vercel.app/",
     code: "https://github.com/MayarIssa/MentoroLast",
-    tint: "#6c4cf1",
+    tint: "#2bcd98",
+    image: { src: "/work/mentoro.webp", alt: "Mentoro's 'Who are Mentoro' section with illustrated cards for community, personalised mentorship and AI assistance" },
     featured: true,
   },
   {
