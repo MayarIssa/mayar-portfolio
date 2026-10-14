@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 import { profile, projects } from "@/content";
@@ -73,13 +74,42 @@ function TypedCode({ playing }: { playing: boolean }) {
   );
 }
 
+/** Her portrait as an image layer on the canvas, with a layer label and a comment pin. */
+function Portrait() {
+  const reduce = useReducedMotion();
+  return (
+    <motion.figure
+      className="relative shrink-0 sm:order-2"
+      initial={reduce ? false : { opacity: 0, scale: 0.85, rotate: -8 }}
+      animate={{ opacity: 1, scale: 1, rotate: 3 }}
+      transition={{ delay: 0.15, type: "spring", stiffness: 120, damping: 14 }}
+      whileHover={reduce ? undefined : { rotate: 0, scale: 1.03 }}
+    >
+      <span aria-hidden="true" className="absolute -top-5 left-1 hidden font-mono text-[11px] text-blue sm:block">mayar.webp</span>
+      <div className="relative size-24 overflow-hidden rounded-full border-4 border-panel shadow-[0_20px_50px_-15px_rgb(0_0_0/0.5)] ring-1 ring-line sm:h-48 sm:w-40 sm:rounded-[1.75rem] md:h-60 md:w-48">
+        <Image src="/me.webp" alt="Portrait of Mayar Issa" fill priority sizes="(min-width: 768px) 192px, (min-width: 640px) 160px, 96px" className="object-cover" />
+      </div>
+      <motion.figcaption
+        className="absolute -left-14 top-8 hidden items-center gap-2 rounded-2xl rounded-bl-sm border border-line bg-panel px-3 py-2 text-sm font-medium shadow-lg sm:flex"
+        initial={reduce ? false : { opacity: 0, x: 12, scale: 0.8 }}
+        animate={{ opacity: 1, x: 0, scale: 1 }}
+        transition={{ delay: 2.3, type: "spring", stiffness: 300, damping: 20 }}
+      >
+        <span aria-hidden="true" className="grid size-6 place-items-center rounded-full bg-pink text-[11px] font-bold text-white">M</span>
+        Hi, I&rsquo;m Mayar <span aria-hidden="true">👋</span>
+      </motion.figcaption>
+    </motion.figure>
+  );
+}
+
 function DesignView() {
   const reduce = useReducedMotion();
   return (
-    <div className="relative flex h-full flex-col justify-center">
-      <div className="relative mx-auto w-fit">
+    <div className="relative flex h-full flex-col items-center justify-center gap-7 sm:flex-row sm:gap-16">
+      <Portrait />
+      <div className="relative w-fit">
         <motion.h1
-          className="font-display text-[clamp(3.4rem,11vw,9rem)] font-extrabold leading-[0.88] tracking-[-0.045em]"
+          className="font-display text-[clamp(3.2rem,9.5vw,8.5rem)] font-extrabold leading-[0.88] tracking-[-0.045em]"
           initial={reduce ? false : { opacity: 0, y: 30, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -151,7 +181,7 @@ export function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden pt-28 sm:pt-32">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[38rem] bg-[radial-gradient(60%_50%_at_50%_0%,rgb(13_153_255/0.18),transparent_70%)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[38rem] bg-[radial-gradient(60%_50%_at_50%_0%,var(--glow),transparent_70%)]" />
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <motion.div
@@ -216,7 +246,8 @@ export function Hero() {
               ) : (
                 <motion.div
                   key="code"
-                  className="relative flex h-full items-center justify-center overflow-hidden"
+                  data-theme="dark"
+                  className="absolute inset-0 flex items-center justify-center overflow-hidden bg-canvas text-text"
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}

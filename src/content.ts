@@ -38,6 +38,8 @@ export type Project = {
   sample?: { request: string; response: string };
   featured?: boolean;
   team?: string;
+  /** Has its own page at /work/[slug] with the project's real material. */
+  caseStudy?: boolean;
 };
 
 export const projects: Project[] = [
@@ -201,7 +203,7 @@ Authorization: Bearer eyJhbGciOi…
       "Power BI dashboard on tumour size, perimeter and texture by diagnosis.",
     ],
     stack: ["Python", "scikit-learn", "pandas", "Power BI"],
-    code: "https://github.com/MayarIssa/breast-cancer-diagnosis",
+    caseStudy: true,
     tint: "#0D99FF",
     image: { src: "/work/breast-cancer.webp", alt: "Scatter plot of perimeter mean against perimeter worst, coloured by benign and malignant diagnosis", fit: "contain" },
   },
@@ -212,15 +214,15 @@ Authorization: Bearer eyJhbGciOi…
     kind: "IoT lock",
     category: "Hardware & games",
     summary: "A working safe that opens with a keypad code or remotely from a phone.",
-    role: "Hardware + firmware",
+    role: "Firmware, Blynk app, schematics and wiring",
     team: "Team of five",
     points: [
       "ESP32 drives a relay-switched solenoid lock, keypad, I2C LCD and alarm buzzer.",
-      "Remote lock and unlock over Wi-Fi with Blynk and a built-in web page.",
+      "Lock and unlock from a phone: Blynk first, then the safe's own Wi-Fi lock page.",
       "Circuits simulated on Wokwi before wiring the real parts.",
     ],
     stack: ["ESP32", "C++", "Blynk", "Wokwi"],
-    code: "https://github.com/MayarIssa/smart-safe",
+    caseStudy: true,
     tint: "#FF4D8D",
     image: { src: "/work/smart-safe.webp", alt: "The finished smart safe: a metal box with a keypad and a blue LCD screen" },
   },
@@ -237,7 +239,7 @@ Authorization: Bearer eyJhbGciOi…
       "A water sensor drives a pump; an LCD, LEDs and a buzzer report status.",
     ],
     stack: ["ATmega32", "C/C++", "Proteus"],
-    code: "https://github.com/MayarIssa/smart-pet-feeder",
+    caseStudy: true,
     tint: "#14AE5C",
   },
   {
@@ -253,7 +255,7 @@ Authorization: Bearer eyJhbGciOi…
       "Ghost movement, collisions, scoring and lives, all drawn with GDI+.",
     ],
     stack: ["C#", "Windows Forms"],
-    code: "https://github.com/MayarIssa/pacman-game",
+    caseStudy: true,
     tint: "#FFC700",
   },
 ];

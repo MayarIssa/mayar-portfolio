@@ -4,6 +4,7 @@ import "@fontsource-variable/figtree";
 import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
 import { profile } from "@/content";
+import { themeScript } from "@/lib/theme";
 
 const title = `${profile.fullName} — ${profile.role}`;
 
@@ -15,7 +16,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className="antialiased">
+    <html lang="en" className="antialiased" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-screen">{children}</body>
     </html>
   );

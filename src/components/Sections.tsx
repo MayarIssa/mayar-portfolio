@@ -1,17 +1,19 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { certifications, education, experience, process, profile, skills, stack } from "@/content";
 import { CursorArrow } from "./Cursor";
 import { Reveal } from "./Reveal";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function SiteHeader() {
   const links = [
-    ["Work", "#work"],
-    ["Process", "#process"],
-    ["Experience", "#experience"],
-    ["Contact", "#contact"],
+    ["Work", "/#work"],
+    ["Process", "/#process"],
+    ["Experience", "/#experience"],
+    ["Contact", "/#contact"],
   ];
   const { scrollYProgress } = useScroll();
   const width = useSpring(scrollYProgress, { stiffness: 200, damping: 30 });
@@ -19,18 +21,20 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-3 z-40 flex justify-center px-3">
       <nav aria-label="Main" className="relative flex w-full max-w-3xl items-center justify-between gap-3 overflow-hidden rounded-full border border-line bg-panel/80 py-1.5 pl-4 pr-1.5 backdrop-blur-xl">
-        <a href="#top" className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
-          <span className="grid size-7 place-items-center rounded-lg bg-gradient-to-br from-blue via-purple to-pink text-xs font-extrabold text-white">MI</span>
-          <span className="hidden sm:inline">{profile.name}</span>
-        </a>
+        <Link href="/#top" className="font-display text-lg font-bold tracking-tight">
+          {profile.name}
+        </Link>
         <ul className="flex items-center gap-0.5 text-sm">
           {links.map(([label, href]) => (
             <li key={href} className="hidden md:block">
               <a href={href} className="rounded-full px-3 py-1.5 text-muted transition hover:bg-panel-2 hover:text-text">{label}</a>
             </li>
           ))}
+          <li className="ml-1">
+            <ThemeToggle />
+          </li>
           <li>
-            <a href={`mailto:${profile.email}`} className="rounded-full bg-blue px-4 py-2 font-semibold text-white transition hover:bg-text hover:text-canvas">Hire me</a>
+            <a href={`mailto:${profile.email}`} className="block rounded-full bg-blue px-4 py-2 font-semibold text-white transition hover:bg-text hover:text-canvas">Hire me</a>
           </li>
         </ul>
         <motion.span aria-hidden="true" className="absolute bottom-0 left-0 h-[2px] origin-left bg-gradient-to-r from-blue via-purple to-pink" style={{ scaleX: width, width: "100%" }} />

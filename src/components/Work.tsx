@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "motion/react";
 import { useState, type MouseEvent } from "react";
 import { categories, projects, type Category, type Project } from "@/content";
@@ -11,6 +12,7 @@ function isReal(url?: string): url is string {
 }
 
 function hostOf(p: Project) {
+  if (p.caseStudy && !isReal(p.live)) return `mayar-issa.vercel.app/work/${p.slug}`;
   const url = isReal(p.live) ? p.live : isReal(p.code) ? p.code : undefined;
   return url ? new URL(url).host + (isReal(p.live) ? "" : new URL(url).pathname) : p.slug;
 }
@@ -86,9 +88,9 @@ function ProjectCard({ project: p, large, span }: { project: Project; large: boo
       <div className="relative m-3 mb-0 overflow-hidden rounded-2xl border border-line bg-canvas">
         <div className="flex items-center gap-2 border-b border-line bg-panel-2 px-3 py-2">
           <span className="flex gap-1" aria-hidden="true">
-            <span className="size-2 rounded-full bg-white/20" />
-            <span className="size-2 rounded-full bg-white/20" />
-            <span className="size-2 rounded-full bg-white/20" />
+            <span className="size-2 rounded-full bg-faint/40" />
+            <span className="size-2 rounded-full bg-faint/40" />
+            <span className="size-2 rounded-full bg-faint/40" />
           </span>
           <span className="truncate font-mono text-[11px] text-muted">{hostOf(p)}</span>
         </div>
@@ -99,7 +101,7 @@ function ProjectCard({ project: p, large, span }: { project: Project; large: boo
 
       <div className="relative flex flex-1 flex-col gap-3 p-6">
         <div className="flex flex-wrap items-center gap-2 text-xs">
-          <span className="rounded-full px-2 py-0.5 font-semibold text-canvas" style={{ background: p.tint }}>{p.kind}</span>
+          <span className="rounded-full px-2 py-0.5 font-semibold text-[#111114]" style={{ background: p.tint }}>{p.kind}</span>
           <span className="text-muted">{p.year}</span>
           {p.team && <span className="text-muted">· {p.team}</span>}
         </div>
@@ -125,6 +127,12 @@ function ProjectCard({ project: p, large, span }: { project: Project; large: boo
             <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-full bg-text px-4 py-2 text-sm font-semibold text-canvas transition hover:bg-blue hover:text-white">
               Live site <span aria-hidden="true">↗</span>
             </a>
+          )}
+          {p.caseStudy && (
+            <Link href={`/work/${p.slug}`} className="group/cs inline-flex items-center gap-1.5 rounded-full bg-text px-4 py-2 text-sm font-semibold text-canvas transition hover:bg-blue hover:text-white">
+              {p.slug === "maze-chase" ? "Play it + case study" : p.slug === "pet-feeder" ? "Try the simulator" : "Case study"}
+              <span aria-hidden="true" className="transition-transform group-hover/cs:translate-x-0.5">→</span>
+            </Link>
           )}
           {isReal(p.code) && (
             <a href={p.code} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-sm font-semibold transition hover:border-text">
