@@ -68,6 +68,7 @@ export const projects: Project[] = [
       "Blood-pressure trend chart in hand-written SVG; 25 unit tests on the clinical rules.",
     ],
     stack: ["Next.js", "TypeScript", "Zod", "Vitest"],
+    live: "https://carechart-ehr.vercel.app/",
     code: "https://github.com/MayarIssa/carechart-ehr",
     tint: "#2f6f68",
     image: { src: "/work/carechart.webp", alt: "CareChart patient summary with a red severe-allergy banner, latest vitals and problem list" },
@@ -154,6 +155,23 @@ projects.push({
   live: "https://hr-pharmacy-nine.vercel.app/",
   code: "https://github.com/MayarIssa/PharmacyHr-",
   tint: "#0f766e",
+});
+
+projects.push({
+  slug: "magnetiq",
+  name: "Magnetiq",
+  year: "2026",
+  kind: "E-commerce store",
+  summary: "An online store for custom photo magnets in Egypt: customers upload a photo, preview it as a magnet, and order.",
+  role: "Designed and built solo",
+  points: [
+    "Photo upload with a live magnet-shaped preview, cart with coupons, and guest checkout.",
+    "Cash on Delivery, InstaPay and a pre-filled WhatsApp order handoff.",
+    "Admin dashboard for orders, products, bundles, offers and coupons.",
+  ],
+  stack: ["Next.js", "TypeScript", "Prisma", "MongoDB"],
+  code: "https://github.com/MayarIssa/magnetiq",
+  tint: "#c2410c",
 });
 
 export const process = [

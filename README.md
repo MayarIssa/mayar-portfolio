@@ -2,7 +2,7 @@
 
 My personal site: the products I've designed and built, my experience, and how to reach me.
 
-**Live:** [ADD: Vercel URL once deployed]
+**Live:** [mayar-issa.vercel.app](https://mayar-issa.vercel.app)
 
 ![Portfolio hero](public/work/hero.webp)
 
