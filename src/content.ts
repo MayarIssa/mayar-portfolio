@@ -309,13 +309,86 @@ export const education = {
   degree: "BSc Computer Science",
   school: "Pharos University, Alexandria",
   when: "2021 – 2025",
-  note: "GPA 3.76 · ECPC competitor 2023 & 2024",
+  note: "GPA 3.76 · ECPC Honorable Mention 2023",
 };
 
-export const certifications = [
-  "CCNA: Introduction to Networks",
-  "CCNA: Switching, Routing & Wireless Essentials",
-  "CCNA: Enterprise Networking, Security & Automation",
+export type Certificate = {
+  id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  detail: string;
+  tag: string;
+  tint: string;
+  /** Scans of the real certificates in /public/certs. More than one shows as a fanned stack. */
+  images: { src: string; alt: string; width: number; height: number; caption?: string }[];
+};
+
+export const certificates: Certificate[] = [
+  {
+    id: "ecpc",
+    title: "Honorable Mention, ECPC Qualifications",
+    issuer: "ICPC · Egyptian Collegiate Programming Contest",
+    date: "Aug 2023",
+    detail: "Competed with a team of three for Pharos University, and again in 2024.",
+    tag: "Award",
+    tint: "#ffc700",
+    images: [{ src: "/certs/ecpc.webp", alt: "ICPC Certificate of Achievement: Honorable Mention, awarded to Mayar Mohamed, Pharos University in Alexandria, 2023 ECPC Qualifications Day 1", width: 1200, height: 848 }],
+  },
+  {
+    id: "route",
+    title: "Back-end (.NET Core) Diploma",
+    issuer: "Route IT Training Center",
+    date: "Oct 2024",
+    detail: "C#, OOP, SQL Server, Entity Framework and LINQ, with an MVC app and a Web API as final projects.",
+    tag: "Diploma",
+    tint: "#9747ff",
+    images: [{ src: "/certs/route.webp", alt: "Route IT Training Center certificate of completion for the Back-end (.NET Core) diploma, Mayar Mohamed Issa, 15 October 2024", width: 458, height: 317 }],
+  },
+  {
+    id: "cisco",
+    title: "CCNA course series",
+    issuer: "Cisco Networking Academy · Skills Plus Egypt",
+    date: "Jul – Aug 2025",
+    detail: "All three CCNA courses: Introduction to Networks; Switching, Routing & Wireless Essentials; Enterprise Networking, Security & Automation.",
+    tag: "3 certificates",
+    tint: "#0d99ff",
+    images: [
+      { src: "/certs/cisco-itn.webp", alt: "Cisco Networking Academy certificate: CCNA Introduction to Networks, Mayar Mohamed, 15 August 2025", width: 490, height: 332, caption: "Introduction to Networks · Aug 2025" },
+      { src: "/certs/cisco-srwe.webp", alt: "Cisco Networking Academy certificate: CCNA Switching, Routing, and Wireless Essentials, Mayar Mohamed, 21 July 2025", width: 490, height: 332, caption: "Switching, Routing & Wireless Essentials · Jul 2025" },
+      { src: "/certs/cisco-ensa.webp", alt: "Cisco Networking Academy certificate: CCNA Enterprise Networking, Security, and Automation, Mayar Mohamed, 15 August 2025", width: 490, height: 332, caption: "Enterprise Networking, Security & Automation · Aug 2025" },
+    ],
+  },
+  {
+    id: "auf",
+    title: "Regional AI Hackathon",
+    issuer: "Agence Universitaire de la Francophonie (AUF)",
+    date: "Mar 2023",
+    detail: "Pitched an AI startup for medical diagnosis and reading medical reports.",
+    tag: "Hackathon",
+    tint: "#ff4d8d",
+    images: [{ src: "/certs/auf.webp", alt: "AUF certificate of participation in the regional Artificial Intelligence hackathon, Mayar Mohamed, 18 March 2023", width: 431, height: 317 }],
+  },
+  {
+    id: "itida",
+    title: "innovEgypt Program",
+    issuer: "ITIDA · TIEC",
+    date: "Aug 2022",
+    detail: "45-hour innovation and project-management training, ending in a startup idea to help save electricity.",
+    tag: "Program",
+    tint: "#ff7262",
+    images: [{ src: "/certs/itida.webp", alt: "ITIDA and TIEC innovEgypt certificate of acknowledgement for a 45-hour training course and a final startup project, Mayar Mohamed Issa", width: 486, height: 346 }],
+  },
+  {
+    id: "st-smart",
+    title: "Robotics with AI Summer Program",
+    issuer: "ST Smart",
+    date: "Jul 2023",
+    detail: "50 hours of Arduino and ESP32 robotics, alongside my summer internship there.",
+    tag: "50 hours",
+    tint: "#14ae5c",
+    images: [{ src: "/certs/st-smart.webp", alt: "ST Smart certificate of achievement for the Robotics With AI Summer Program (50 hours), Mayar Mohamed Issa, 31 July 2023", width: 435, height: 317 }],
+  },
 ];
 
 export const skills: { group: string; items: string[] }[] = [

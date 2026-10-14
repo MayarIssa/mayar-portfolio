@@ -122,3 +122,20 @@ body {
   animation: none;
   mix-blend-mode: normal;
 }
+
+/* Certificate viewer: scale up from the card on open. */
+.cert-viewer[open] {
+  animation: cert-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cert-viewer[open]::backdrop {
+  animation: cert-fade 0.3s ease-out;
+}
+@keyframes cert-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+}
+@keyframes cert-fade {
+  from { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cert-viewer[open], .cert-viewer[open]::backdrop { animation: none; }
+}

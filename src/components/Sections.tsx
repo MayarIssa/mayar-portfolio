@@ -3,7 +3,7 @@
 import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { certifications, education, experience, process, profile, skills, stack } from "@/content";
+import { certificates, education, experience, process, profile, skills, stack } from "@/content";
 import { CursorArrow } from "./Cursor";
 import { Reveal } from "./Reveal";
 import { ThemeToggle } from "./ThemeToggle";
@@ -13,6 +13,7 @@ export function SiteHeader() {
     ["Work", "/#work"],
     ["Process", "/#process"],
     ["Experience", "/#experience"],
+    ["Certificates", "/#certificates"],
     ["Contact", "/#contact"],
   ];
   const { scrollYProgress } = useScroll();
@@ -140,12 +141,20 @@ export function Experience() {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="rounded-2xl border border-line bg-panel p-6">
-              <h3 className="font-display text-xl font-bold">Cisco certificates</h3>
+            <a href="#certificates" className="group block rounded-2xl border border-line bg-panel p-6 transition hover:border-yellow">
+              <h3 className="flex items-center justify-between font-display text-xl font-bold">
+                Certificates &amp; awards
+                <span aria-hidden="true" className="text-muted transition group-hover:translate-y-0.5 group-hover:text-yellow">↓</span>
+              </h3>
               <ul className="mt-3 flex flex-col gap-1 text-muted">
-                {certifications.map((c) => <li key={c}>{c}</li>)}
+                {certificates.map((c) => (
+                  <li key={c.id} className="flex justify-between gap-3">
+                    <span>{c.title}</span>
+                    <span className="shrink-0 font-mono text-xs leading-6 text-faint">{c.date}</span>
+                  </li>
+                ))}
               </ul>
-            </div>
+            </a>
           </Reveal>
         </div>
       </div>
