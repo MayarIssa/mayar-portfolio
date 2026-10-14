@@ -393,7 +393,7 @@ export const certificates: Certificate[] = [
 ];
 
 export const skills: { group: string; items: string[] }[] = [
-  { group: "Design", items: ["Figma", "UI/UX design", "Wireframing", "Prototyping", "Design systems", "Responsive & RTL layouts"] },
+  { group: "Design", items: ["Figma", "UI/UX design", "Wireframing", "Prototyping", "Responsive & RTL layouts"] },
   { group: "Frontend", items: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Flutter"] },
   { group: "Backend & data", items: ["C#", "ASP.NET Core", "SQL Server", "Supabase", "MongoDB", "Python"] },
   { group: "Ship", items: ["Git", "GitHub Actions", "Vercel", "Cloudflare", "SEO"] },
