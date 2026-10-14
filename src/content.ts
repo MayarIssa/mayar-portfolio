@@ -131,8 +131,9 @@ Authorization: Bearer eyJhbGciOi…
       "Records each resident's payments and totals what's collected every month.",
       "Logs building expenses like electricity, water and elevator maintenance.",
     ],
-    stack: ["Next.js", "MongoDB Atlas", "Vercel"],
+    stack: ["Next.js", "TypeScript", "MongoDB Atlas"],
     live: "https://building11.vercel.app/",
+    code: "https://github.com/MayarIssa/BuildingFinance",
     tint: "#b4532a",
   },
 ];
@@ -142,15 +143,16 @@ projects.push({
   name: "Nour HR",
   year: "2026",
   kind: "Pharmacy HR system",
-  summary: "A bilingual HR system for a pharmacy with several branches, in Arabic and English.",
+  summary: "A bilingual HR system for a multi-branch pharmacy, from schedules and attendance to monthly payroll.",
   role: "Designed and built solo",
   points: [
-    "Employee records with job, branch, contract, salary and bank details.",
-    "Role-based access for admins, HR, area managers and control staff.",
+    "Approval flows for holidays, overtime, salary borrows and resignations, plus an audit log.",
+    "25-table Postgres schema with row-level security on every table, enforced by 53 policies.",
     "Full right-to-left Arabic interface with a switch to English.",
   ],
-  stack: ["TypeScript", "Tailwind CSS", "Arabic RTL"],
+  stack: ["Next.js", "TypeScript", "Supabase", "Postgres"],
   live: "https://hr-pharmacy-nine.vercel.app/",
+  code: "https://github.com/MayarIssa/PharmacyHr-",
   tint: "#0f766e",
 });
 
