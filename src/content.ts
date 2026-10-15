@@ -88,7 +88,7 @@ export const projects: Project[] = [
     live: "https://mentoro2.vercel.app/",
     code: "https://github.com/MayarIssa/MentoroLast",
     tint: "#14AE5C",
-    image: { src: "/work/mentoro.webp", alt: "Mentoro's 'Who are Mentoro' section with illustrated cards for community, personalised mentorship and AI assistance" },
+    image: { src: "/work/mentoro-profile.webp", alt: "Mentoro mentor profile page: sidebar navigation, mentor photo, name and specialty, About Me, and mentorship plans with a priced roadmap", position: "center top" },
     featured: true,
   },
   {
