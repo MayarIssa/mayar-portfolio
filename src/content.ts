@@ -60,7 +60,7 @@ export type Project = {
   code?: string;
   /** Accent colour for the card and its cover when there's no screenshot. */
   tint: string;
-  image?: { src: string; alt: string; fit?: "cover" | "contain" };
+  image?: { src: string; alt: string; fit?: "cover" | "contain"; position?: string };
   /** For API projects: a real request and response, shown instead of a screenshot. */
   sample?: { request: string; response: string };
   featured?: boolean;
@@ -127,6 +127,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "Supabase", "Postgres"],
     live: "https://hr-pharmacy-nine.vercel.app/",
     code: "https://github.com/MayarIssa/PharmacyHr-",
+    image: { src: "/work/nour-hr.webp", alt: "Nour HR dashboard in Arabic, right to left: welcome banner, totals for employees, attendance, holidays and requests, and quick-action shortcuts", position: "right top" },
     tint: "#9747FF",
     featured: true,
   },
@@ -166,6 +167,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "Prisma", "MongoDB"],
     live: "https://magnetiq-freelancer12.vercel.app/",
     code: "https://github.com/MayarIssa/magnetiq",
+    image: { src: "/work/magnetiq.webp", alt: "Magnetiq home page: sale banner, navigation for small magnets, large magnets and event cards, and buttons to shop magnets or event cards", position: "center top" },
     tint: "#FF7262",
   },
   {
@@ -183,6 +185,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "MongoDB Atlas"],
     live: "https://building11.vercel.app/",
     code: "https://github.com/MayarIssa/BuildingFinance",
+    image: { src: "/work/buildfin.webp", alt: "BuildFin building overview: total balance split into cash and bank, collected, spent and net cards, and a monthly income versus expenses chart", position: "left top" },
     tint: "#FFC700",
   },
   {

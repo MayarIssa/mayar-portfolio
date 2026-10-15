@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "motion/react";
 import { useState, type MouseEvent } from "react";
 import { categories, projects, type Category, type Project } from "@/content";
-import { CircuitCover, DashboardCover, FinanceCover, MazeCover, StoreCover } from "./Covers";
+import { CircuitCover, MazeCover } from "./Covers";
 
 function isReal(url?: string): url is string {
   return !!url && url.startsWith("http");
@@ -26,6 +26,7 @@ function Cover({ project: p }: { project: Project }) {
         fill
         sizes="(min-width: 1024px) 560px, 100vw"
         className={`${p.image.fit === "contain" ? "object-contain bg-white p-2" : "object-cover object-top"} transition-transform duration-700 ease-out group-hover:scale-[1.04]`}
+        style={p.image.position ? { objectPosition: p.image.position } : undefined}
       />
     );
   if (p.sample)
@@ -36,12 +37,6 @@ function Cover({ project: p }: { project: Project }) {
       </div>
     );
   switch (p.slug) {
-    case "nour-hr":
-      return <DashboardCover tint={p.tint} rtl title="لوحة التحكم" />;
-    case "magnetiq":
-      return <StoreCover tint={p.tint} />;
-    case "buildfin":
-      return <FinanceCover tint={p.tint} />;
     case "pet-feeder":
       return <CircuitCover tint={p.tint} />;
     case "maze-chase":
