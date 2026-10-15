@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
-import { profile, projects } from "@/content";
+import { focus, profile, projects } from "@/content";
+import { IconCode, IconDownload, IconGitHub, IconGlobe, IconLinkedIn, IconMail, IconPen, IconWhatsApp } from "./Icons";
 import { CursorArrow } from "./Cursor";
 
 type Mode = "design" | "code";
@@ -279,9 +280,47 @@ export function Hero() {
                 See my work
                 <span aria-hidden="true" className="transition-transform group-hover:translate-y-0.5">↓</span>
               </a>
-              <a href={profile.github} className="rounded-full border border-line px-5 py-3 font-semibold transition hover:border-text">GitHub</a>
-              <a href={profile.linkedin} className="rounded-full border border-line px-5 py-3 font-semibold transition hover:border-text">LinkedIn</a>
+              <a href={profile.cv} download className="group inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 font-semibold transition hover:border-text">
+                Download CV
+                <IconDownload className="transition-transform group-hover:translate-y-0.5" />
+              </a>
             </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <span className="font-mono text-xs uppercase tracking-[0.14em] text-faint">Connect</span>
+              {[
+                { label: "LinkedIn", href: profile.linkedin, Icon: IconLinkedIn, hover: "hover:border-[#0a66c2] hover:text-[#0a66c2]" },
+                { label: "Email", href: `mailto:${profile.email}`, Icon: IconMail, hover: "hover:border-pink hover:text-pink" },
+                { label: "GitHub", href: profile.github, Icon: IconGitHub, hover: "hover:border-text" },
+                { label: "WhatsApp", href: profile.whatsapp, Icon: IconWhatsApp, hover: "hover:border-green hover:text-green" },
+              ].map(({ label, href, Icon, hover }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
+                  aria-label={label}
+                  title={label}
+                  className={`grid size-10 place-items-center rounded-full border border-line bg-panel text-muted transition hover:-translate-y-0.5 ${hover}`}
+                >
+                  <Icon />
+                </a>
+              ))}
+            </div>
+
+            <ul className="mt-6 flex flex-wrap gap-2" aria-label="What I focus on">
+              {focus.map((f) => {
+                const Icon = f.icon === "pen" ? IconPen : f.icon === "code" ? IconCode : IconGlobe;
+                return (
+                  <li key={f.label} className="inline-flex items-center gap-2 rounded-xl border border-line bg-panel py-1.5 pl-1.5 pr-3.5 text-sm font-semibold">
+                    <span className="grid size-7 place-items-center rounded-lg" style={{ background: `color-mix(in srgb, ${f.color} 18%, transparent)`, color: f.color }}>
+                      <Icon className="size-4" />
+                    </span>
+                    {f.label}
+                  </li>
+                );
+              })}
+            </ul>
           </motion.div>
 
           <motion.dl

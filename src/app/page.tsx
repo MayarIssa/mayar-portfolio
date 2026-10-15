@@ -1,3 +1,4 @@
+import { About } from "@/components/About";
 import { Certificates } from "@/components/Certificates";
 import { Hero } from "@/components/Hero";
 import { Contact, Experience, Process, SiteHeader, StackMarquee, VisitorCursor } from "@/components/Sections";
@@ -12,6 +13,7 @@ export default function Home() {
         <Hero />
         <StackMarquee />
         <Work />
+        <About />
         <Process />
         <Experience />
         <Certificates />

@@ -7,11 +7,12 @@ import { certificates, education, experience, process, profile, skills, stack } 
 import { CursorArrow } from "./Cursor";
 import { Reveal } from "./Reveal";
 import { ThemeToggle } from "./ThemeToggle";
+import { IconDownload, IconGitHub, IconLinkedIn, IconMail, IconWhatsApp } from "./Icons";
 
 export function SiteHeader() {
   const links = [
     ["Work", "/#work"],
-    ["Process", "/#process"],
+    ["About", "/#about"],
     ["Experience", "/#experience"],
     ["Certificates", "/#certificates"],
     ["Contact", "/#contact"],
@@ -193,13 +194,27 @@ export function Contact() {
             >
               {copied ? "Copied ✓" : profile.email}
             </button>
+            <a href={profile.whatsapp} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 font-semibold transition hover:border-green hover:text-green"><IconWhatsApp /> WhatsApp</a>
+            <a href={profile.cv} download className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 font-semibold transition hover:border-text"><IconDownload /> Download CV</a>
             <a href={profile.linkedin} target="_blank" rel="noreferrer" className="rounded-full border border-line px-5 py-3 font-semibold transition hover:border-text">LinkedIn ↗</a>
             <a href={profile.github} target="_blank" rel="noreferrer" className="rounded-full border border-line px-5 py-3 font-semibold transition hover:border-text">GitHub ↗</a>
           </div>
           <span className="sr-only" aria-live="polite">{copied ? "Email address copied" : ""}</span>
         </div>
       </Reveal>
-      <p className="mt-10 text-center text-sm text-faint">© 2026 {profile.fullName}. Designed and built by me, with Next.js, Tailwind CSS and Motion.</p>
+      <div className="mt-10 flex justify-center gap-2">
+        {[
+          { label: "LinkedIn", href: profile.linkedin, Icon: IconLinkedIn },
+          { label: "Email", href: `mailto:${profile.email}`, Icon: IconMail },
+          { label: "GitHub", href: profile.github, Icon: IconGitHub },
+          { label: "WhatsApp", href: profile.whatsapp, Icon: IconWhatsApp },
+        ].map(({ label, href, Icon }) => (
+          <a key={label} href={href} aria-label={label} title={label} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="grid size-10 place-items-center rounded-full border border-line text-muted transition hover:border-text hover:text-text">
+            <Icon />
+          </a>
+        ))}
+      </div>
+      <p className="mt-6 text-center text-sm text-faint">© 2026 {profile.fullName}. Designed and built by me, with Next.js, Tailwind CSS and Motion.</p>
     </section>
   );
 }

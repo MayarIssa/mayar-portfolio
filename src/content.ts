@@ -14,6 +14,33 @@ export const profile = {
   email: "Myar.issa2003@gmail.com",
   github: "https://github.com/MayarIssa",
   linkedin: "https://www.linkedin.com/in/mayar-issa/",
+  phone: "+20 106 210 0482",
+  whatsapp: "https://wa.me/201062100482",
+  cv: "/Mayar_Issa_CV.pdf",
+};
+
+/** Short tags shown under the hero buttons. */
+export const focus = [
+  { label: "UI/UX Design", color: "var(--color-pink)", icon: "pen" },
+  { label: "Frontend Development", color: "var(--color-blue)", icon: "code" },
+  { label: "Open to remote work", color: "var(--color-green)", icon: "globe" },
+] as const;
+
+export const about = {
+  who:
+    "I'm a UI/UX designer and frontend developer from Alexandria, Egypt. I studied Computer Science at Pharos University, taught Human-Computer Interaction there as a Teaching Assistant, and now work as a Full Stack Developer at Sublime+.",
+  approach:
+    "I start with the people who will use the product, design every screen and state in Figma, then build it myself in Next.js and TypeScript. Because I know the backend too, the designs I hand over are ones a team can actually ship.",
+  details: [
+    { label: "Name", value: "Mayar Mohamed Issa" },
+    { label: "Location", value: "Alexandria, Egypt" },
+    { label: "Email", value: "Myar.issa2003@gmail.com", href: "mailto:Myar.issa2003@gmail.com" },
+    { label: "Phone / WhatsApp", value: "+20 106 210 0482", href: "https://wa.me/201062100482" },
+    { label: "Availability", value: "Open to UI/UX and frontend roles, on-site or remote" },
+    { label: "Education", value: "Pharos University · BSc Computer Science · GPA 3.76" },
+    { label: "Languages", value: "Arabic (native) · English (professional)" },
+    { label: "Current role", value: "Full Stack Developer at Sublime+" },
+  ],
 };
 
 export const categories = ["All", "Web apps", "Backend", "Data", "Hardware & games"] as const;
